@@ -1,0 +1,10 @@
+.background_color:hover a{
+    color: #fff !important;
+}
+.bgImage{
+    background-image: url("./images/main.png.jpg");
+    width: 100%;
+    background-size: 100%;
+    /* height: auto; */
+    background-repeat: no-repeat;
+}
