@@ -45,7 +45,18 @@
       
 
     <!-- Banner image -->
-    <div class="container-fluid">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-inner container mt-2">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="./images/main.png.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption text-light">
+            <h5 class="text-start">New Season Arrivals</h5>
+            <p class="text-start">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="container-fluid">
       <div class="bgImage">
         <div class="container d-flex justify-content-center align-items-center">
           <div class="">
@@ -54,7 +65,7 @@
           </div>
         </div>
       </div>      
-    </div>
+    </div> -->
 
 
     <!-- latest products -->
@@ -65,7 +76,7 @@
     <!-- index cart -->
     <div class="container d-flex justify-content-center my-5">
       <button type="button" class="btn btn-outline-dark me-2">All</button>
-      <button type="button" class="btn btn-outline-dark me-2">Mens Clothing</button>
+      <button type="button" class="btn btn-outline-dark me-2" id="mensClothing">Mens Clothing</button>
       <button type="button" class="btn btn-outline-dark me-2">Womens Clothing</button>
       <button type="button" class="btn btn-outline-dark me-2">Jewelery</button>
       <button type="button" class="btn btn-outline-dark">Electronics</button>
