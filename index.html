@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index Page</title>
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="index.css"> -->
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -35,9 +36,9 @@
               </li>
             </ul>
           <div>
-                <a href="#" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2 background_color"><i class="fa-solid fa-right-to-bracket"></i> Login </button></a>
-                <a href="#" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2 background_color"><i class="fa-solid fa-user-plus"></i> Register </button></a>
-                <a href="cart.html" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2 background_color"><i class="fa-solid fa-cart-shopping"></i> Cart (0) </button></a>
+                <a href="#" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-right-to-bracket"></i> Login </button></a>
+                <a href="#" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-user-plus"></i> Register </button></a>
+                <a href="cart.html" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-cart-shopping"></i> Cart (0) </button></a>
             </div>
           </div>
         </div>
@@ -45,27 +46,16 @@
       
 
     <!-- Banner image -->
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-      <div class="carousel-inner container mt-2">
-        <div class="carousel-item active" data-bs-interval="10000">
-          <img src="./images/main.png.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption text-light">
-            <h5 class="text-start">New Season Arrivals</h5>
-            <p class="text-start">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- <div class="container-fluid">
-      <div class="bgImage">
-        <div class="container d-flex justify-content-center align-items-center">
-          <div class="">
-            <p class="text-light">New Season Arrivals</p>
-            <p class="text-light">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer</p>
+    <div class="container-fluid">
+      <div class="bgImage img-fluid">
+        <div class="container-fluid d-flex align-items-center">
+          <div class="content">
+            <p class="text-light title">New Season Arrivals</p>
+            <p class="text-light text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer</p>
           </div>
         </div>
       </div>      
-    </div> -->
+    </div>
 
 
     <!-- latest products -->
@@ -74,17 +64,30 @@
     </div>
 
     <!-- index cart -->
-    <div class="container d-flex justify-content-center my-5">
-      <button type="button" class="btn btn-outline-dark me-2">All</button>
-      <button type="button" class="btn btn-outline-dark me-2" id="mensClothing">Mens Clothing</button>
-      <button type="button" class="btn btn-outline-dark me-2">Womens Clothing</button>
-      <button type="button" class="btn btn-outline-dark me-2">Jewelery</button>
-      <button type="button" class="btn btn-outline-dark">Electronics</button>
+    <div class="container">
+      <div class="row m-5" id="cartButton">
+        <div class="col-sm-none col-lg-1 col-md-none"></div>
+        <div class="col-sm-12 col-lg-1 mb-2 col-md-6">
+          <button type="button" class="btn btn-outline-dark me-2 active" onclick="filterProducts('all')">All</button>
+        </div>
+        <div class="col-sm-12 col-lg-2 mb-2 col-md-6">
+          <button type="button" class="btn btn-outline-dark me-2" onclick="filterProducts('men\'s clothing')">Mens Clothing</button>
+        </div>
+        <div class="col-sm-12 col-lg-2 mb-2 col-md-6 me-0" style="width: 194px;">
+          <button type="button" class="btn btn-outline-dark me-2" onclick="filterProducts(`women\'s clothing`)">Womens Clothing</button>
+        </div>
+        <div class="col-sm-12 col-lg-2 mb-2 col-md-6">
+          <button type="button" class="btn btn-outline-dark me-2" onclick="filterProducts(`jewelery`)">Jewelery</button>
+        </div>
+        <div class="col-sm-12 col-lg-2 mb-2 col-md-6">
+          <button type="button" class="btn btn-outline-dark" onclick="filterProducts(`electronics`)">Electronics</button>
+        </div>
+      </div>
     </div>
 
     <!-- cart items -->
     <div class="container">
-      <div class="row">
+      <div class="row" id="cartItems">
         <!-- <div class="col">
           <div class="card" style="width: 20rem;">
             <img src="..." class="card-img-top" alt="...">
@@ -141,7 +144,8 @@
         <p>Made with by <i class="fa-solid fa-heart text-danger"></i> <a href="#" class="text-dark">AchieversIT</a></p>
     </footer>
 
-    <script src="index.js"></script>
-
+    <script src="indexx.js"></script>
+    <script src="cart.js"></script>
+    <!-- <script src="filterItems.js"></script> -->
 </body>
 </html>
