@@ -13,10 +13,6 @@ let totalAmount = totalPrice + 30;  // toatal price with shipping
 let totalCount = localStorage.getItem('count'); // total number of products in cart
 // console.log(totalCount);
 
-// let totalCartItems = localStorage.getItem('cartCount');  // total products without repeatation
-// console.log(totalCartItems);
-
-
 if(localStorage.getItem('cart')){
     cartList = JSON.parse(localStorage.getItem('cart'));
 }
@@ -45,10 +41,6 @@ let h5Text = document.createTextNode('Item List')
 h5.appendChild(h5Text);
 
 let itemDisplay = document.createElement('div');
-
-// console.log(h5);
-// console.log(itemDiv);
-
 
 col1.appendChild(itemDiv)
 itemDiv.appendChild(h5)
@@ -109,35 +101,24 @@ col2.appendChild(summaryDiv)
 summaryDiv.appendChild(summaryList)
 cartElement.appendChild(col2)
 
-// // add function
-// let add = (quantity, value) => {
-//     console.log(quantity,value);
-//     for(let key in cart){
-//         // console.log(key,cart.id);
+// add function
+let add = (quantity, value) => {
+    console.log(quantity,value);
+    for(let key in cart){
+        // console.log(key,cart.id);
         
-//         console.log(key, cart[key].id);
-//         if(key == cart[key].id){
-//         cart[key].qty += value;
-//     }
-//         // console.log(cart[key].qty);
+        console.log(key, cart[key].id);
+        if(key == cart[key].id){
+        cart[key].qty += value;
+    }
+        // console.log(cart[key].qty);
         
-//     }
+    }
     
 
-// }
+}
 
 // let addFn = document.querySelector('.add');
 // // console.log(addFn);
 console.log(cart);
 
-
-// addItem = () => {
-//     console.log(cart);
-//         // for(let ele in cart){
-//         //     console.log(ele);
-            
-//         // }
-        
-// }
-
-// addFn.addEventListener('click',addItem)
