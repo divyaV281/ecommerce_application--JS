@@ -36,7 +36,7 @@
           <div>
                 <a href="#" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-right-to-bracket"></i> Login </button></a>
                 <a href="#" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-user-plus"></i> Register </button></a>
-                <a href="cart.html" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-cart-shopping"></i> Cart (0) </button></a>
+                <a href="cart.html" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-cart-shopping"></i> Cart <span id="count">0</span> price <span id="sum">0</span> </button></a>
             </div>
           </div>
         </div>
@@ -56,25 +56,25 @@
         
         <!-- add to cart -->
         <div class="container my-5">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="itemList me-4 border rounded-2 p-2">
+            <div class="row" id="cart">
+            <!-- <div class="col-lg-8 col-sm-12 mb-5">
+                    <div class="me-4 border rounded-2 flex-wrap" id="cartList">
                         <h5 class="border-bottom p-2 bg-light rounded-top">Item list</h5>
-                        <div class="d-flex align-items-center p-2 border-bottom border-2">
+                        <div class="d-lg-flex align-items-center p-2 border-bottom border-2 mb-2 d-sm-block text-center">
                             <img src="./images/electronics.webp" alt="img" class="me-3" style="width: 115px;">
-                            <h5 class="me-3">Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</h5>
+                            <h5>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</h5>
                             <button type="button" class="btn btn-light me-3">-</button>
                             <input type="text" class="me-3 border-0" style="width: 25px;" value="1">
                             <button type="button" class="btn btn-light">+</button>
                         </div>
-                        <div class="d-flex align-items-center p-2 border-bottom border-2">
+                        <div class="d-lg-flex align-items-center p-2 border-bottom border-2 mb-2 d-sm-block text-center">
                             <img src="./images/electronics.webp" alt="img" class="me-3" style="width: 115px;">
-                            <h5 class="me-3">Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED </h5>
+                            <h5 class="me-3">Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) - Super Ultrawide Screen QLED </h5>
                             <button type="button" class="btn btn-light me-3">-</button>
                             <input type="text" class="me-3 border-0" style="width: 25px;" value="1">
                             <button type="button" class="btn btn-light">+</button>
                         </div>
-                        <div class="d-flex align-items-center p-2 border-bottom border-2">
+                        <div class="d-lg-flex align-items-center p-2 border-bottom border-2 mb-2 d-sm-block text-center">
                             <img src="./images/electronics.webp" alt="img" class="me-3" style="width: 115px;">
                             <h5 class="me-3">John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet</h5>
                             <button type="button" class="btn btn-light me-3">-</button>
@@ -82,11 +82,11 @@
                             <button type="button" class="btn btn-light">+</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="summary bg-light border rounded-2 p-2">
-                        <h5 class="border-bottom p-2">Order Summary</h5>
-                        <div>
+                </div> 
+                 <div class="col-lg-4 col-sm-12">
+                    <div class="summary border rounded-2 ">
+                        <h5 class="border-bottom p-2 bg-light rounded-top">Order Summary</h5>
+                        <div class="p-2">
                             <div class="d-flex justify-content-between">
                                 <p>Products (0) </p>
                                 <p>$ 123</p>
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>               
         </div>
 
@@ -113,5 +113,8 @@
         <footer class="d-flex justify-content-center mb-5">
             <p>Made with by <i class="fa-solid fa-heart text-danger"></i> <a href="#" class="text-dark">AchieversIT</a></p>
         </footer>
+
+        <!-- <script src="index.js"></script> -->
+        <script src="cart.js"></script>
 </body>
 </html>
