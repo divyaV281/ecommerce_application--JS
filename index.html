@@ -38,7 +38,7 @@
           <div>
                 <a href="#" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-right-to-bracket"></i> Login </button></a>
                 <a href="#" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-user-plus"></i> Register </button></a>
-                <a href="cart.html" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-cart-shopping"></i> Cart (0) </button></a>
+                <a href="cart.html" class="text-decoration-none text-dark"><button type="button" class="btn btn-outline-dark ms-2"><i class="fa-solid fa-cart-shopping"></i> Cart (<span id="count">0</span>) </button></a>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@
       <div class="row m-5" id="cartButton">
         <div class="col-sm-none col-lg-1 col-md-none"></div>
         <div class="col-sm-12 col-lg-1 mb-2 col-md-6">
-          <button type="button" class="btn btn-outline-dark me-2 active" onclick="filterProducts('all')">All</button>
+          <button type="button" class="btn btn-outline-dark me-2" onclick="filterProducts('all')">All</button>
         </div>
         <div class="col-sm-12 col-lg-2 mb-2 col-md-6">
           <button type="button" class="btn btn-outline-dark me-2" onclick="filterProducts('men\'s clothing')">Mens Clothing</button>
@@ -144,8 +144,8 @@
         <p>Made with by <i class="fa-solid fa-heart text-danger"></i> <a href="#" class="text-dark">AchieversIT</a></p>
     </footer>
 
-    <script src="indexx.js"></script>
-    <script src="cart.js"></script>
+    <script src="index.js"></script>
+    <!-- <script src="cart.js"></script> -->
     <!-- <script src="filterItems.js"></script> -->
 </body>
 </html>

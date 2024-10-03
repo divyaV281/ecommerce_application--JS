@@ -1,17 +1,21 @@
 // accessing the variables
 const row = document.getElementById('cartItems');
 let products;
-// console.log(row)
-// let products =[];
 
 let count = 0;
-// let totalPrice = 0;
+let sum= 0;
 let cart ={};
+let cartCount = 0;
 
 if (localStorage.getItem("count")) {
     count = parseInt(localStorage.getItem("count"));
 }
-
+if (localStorage.getItem("sum")) {
+    sum = parseInt(localStorage.getItem("sum"));
+}
+if (localStorage.getItem("cartCount")) {
+    cartCount = parseInt(localStorage.getItem("cartCount"));
+}
 if (localStorage.getItem("cart")) {
     cart = JSON.parse(localStorage.getItem("cart"));
 }
@@ -23,8 +27,12 @@ updateCart();
 async function fetchAPI(){
     fetch('https://fakestoreapi.com/products').then(res => res.json()).then((data) => {
         // console.log(data);
-        displayProducts(data);
-        products = data
+        products = data;
+        displayProducts(products);
+        // console.log(products);
+        // console.log(data);
+        
+        
     })
 }
 fetchAPI();
@@ -35,7 +43,7 @@ function displayProducts(data){
     // console.log(data);
     
     row.innerHTML = '';   // to clear the container
-    data.forEach((ele) =>{
+    products.forEach((ele) =>{
         // console.log(ele.title);
         titleTruncate(ele.title); // titleTruncate function
         
@@ -55,13 +63,14 @@ function displayProducts(data){
         </ul>
         <div class="card-body text-center d-flex justify-content-center">
         <button type="button" class="btn btn-dark py-2 mx-4">Details</button>
-        <button type="button" class="btn btn-dark py-2 cartButton" data-price=${ele.price} data-id=${ele.id} >Add to Cart</button>
+        <button type="button" class="btn btn-dark py-2 cartButton" data-price=${ele.price} data-id=${ele.id} data-image=${ele.image} data-title=${ele.title}>Add to Cart</button>
         </div>
         </div>
         </div>
         `;
 
     })
+        // selecting all the buttons and adding event
         let btns = document.querySelectorAll(".cartButton");
         // console.log(btns);
 
@@ -112,36 +121,50 @@ function filterProducts(category){
 
 function addCart(event){
     let price = Number(event.target.dataset.price);   
-    console.log(price);
-    // let title = event.target.dataset.title;
+    // console.log(price);
+    let title = event.target.dataset.title;
     let id = event.target.dataset.id;
+    let image = event.target.dataset.image;
+    // let qty = event.target.dataset.qty;
+    // console.log(qty);
+    
     
     if(id in cart){
         console.log(id,cart);
-        
         cart[id].qty++;
     }
     else{
         let cartItem ={
-            // title : title,
+            id : id,
+            title : title,
             price : price,
-            qty:1
+            image : image,
+            qty: 1
         };
         cart[id] = cartItem;
+        cartCount++;
     }
 
     count++;
-    // sum += price;
+    sum += price;
+    // img = image;
+    // cartTitle = title;
+    // itemQty = qty++;
 
+    // console.log(img, title);
+    
     console.log(cart);
 
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCart()
-    
+
 }
 
 
 function updateCart(){
-    document.getElementById("count").textContent = count;
+    document.getElementById("count").textContent = cartCount;
+    localStorage.setItem('cartCount',cartCount);
     localStorage.setItem("count", count);
+    // document.getElementById("sum").textContent = sum;
+    localStorage.setItem("sum",Math.round(sum));
 }
