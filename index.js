@@ -28,7 +28,7 @@ async function fetchAPI(){
     fetch('https://fakestoreapi.com/products').then(res => res.json()).then((data) => {
         // console.log(data);
         products = data;
-        displayProducts(products);
+        displayProducts(data);
         // console.log(products);
         // console.log(data);
         
@@ -43,7 +43,7 @@ function displayProducts(data){
     // console.log(data);
     
     row.innerHTML = '';   // to clear the container
-    products.forEach((ele) =>{
+    data.forEach((ele) =>{
         // console.log(ele.title);
         titleTruncate(ele.title); // titleTruncate function
         
@@ -121,13 +121,10 @@ function filterProducts(category){
 
 function addCart(event){
     let price = Number(event.target.dataset.price);   
-    // console.log(price);
     let title = event.target.dataset.title;
     let id = event.target.dataset.id;
     let image = event.target.dataset.image;
-    // let qty = event.target.dataset.qty;
-    // console.log(qty);
-    
+  
     
     if(id in cart){
         console.log(id,cart);
@@ -147,12 +144,6 @@ function addCart(event){
 
     count++;
     sum += price;
-    // img = image;
-    // cartTitle = title;
-    // itemQty = qty++;
-
-    // console.log(img, title);
-    
     console.log(cart);
 
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -165,6 +156,5 @@ function updateCart(){
     document.getElementById("count").textContent = cartCount;
     localStorage.setItem('cartCount',cartCount);
     localStorage.setItem("count", count);
-    // document.getElementById("sum").textContent = sum;
     localStorage.setItem("sum",Math.round(sum));
 }
