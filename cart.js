@@ -1,8 +1,10 @@
 let cartList = {};
 // console.log(cartList);
+let d;
 
 // getting elements from local storage
 let cartElement = document.getElementById('cart');
+let cartElement2 = document.getElementById('cart1')
 
 let totalPrice = +localStorage.getItem('sum')  // Price of all elements
 // console.log(totalPrice);
@@ -12,6 +14,8 @@ let totalAmount = totalPrice + 30;  // toatal price with shipping
 
 let totalCount = localStorage.getItem('count'); // total number of products in cart
 // console.log(totalCount);
+
+
 
 if(localStorage.getItem('cart')){
     cartList = JSON.parse(localStorage.getItem('cart'));
@@ -23,7 +27,6 @@ else{
     `;
 
 }
-
 
 
 // item list
@@ -45,30 +48,84 @@ let itemDisplay = document.createElement('div');
 col1.appendChild(itemDiv)
 itemDiv.appendChild(h5)
 itemDiv.appendChild(itemDisplay)
-cartElement.appendChild(col1)
+cartElement2.appendChild(col1)
+
+
 
 for(let id in cartList){
     let item = cartList[id];
     // console.log(id);
     
     itemDisplay.innerHTML += `
-        <div class="d-lg-flex align-items-center p-2 border-bottom border-2 mb-2 d-sm-block text-center">
-            <img src="${item.image}" alt="img" class="me-3" style="width: 100px;">
-            <h5>${item.title}</h5>
-            <button type="button" class="btn btn-light mx-3 sub" onclick='add(${item.qty},-1)'>-</button>
-            <span>${item.qty}</span>
-            <button type="button" class="btn btn-light mx-3" onclick='add(${item.qty},1)'>+</button> <br>
-            <span class='ms-5'>${item.qty}</span>
-            <span class='mx-4'>*</span>
-            <span><b>$ ${item.price}</b></span>
-        </div>
+    <div class="d-lg-flex align-items-center p-2 border-bottom border-2 mb-2 d-sm-block text-center">
+    <img src="${item.image}" alt="img" class="me-3" style="width: 100px;">
+    <h5>${item.title}</h5>
+    <button type="button" class="btn btn-light mx-3 sub">-</button>
+    <input type='text name='qty' id=${item.id} value=${item.qty} style='width:30px; border:none'>
+    <button type="button" class="btn btn-light mx-3 add">+</button> <br>
+    <input type='text name='qty' class='ms-3' id=${item.id} value=${item.qty} style='width:30px; border:none'>
+    <span class='mx-4'>*</span>
+    <span><b>$ ${item.price}</b></span>
+    </div>
     `    
-
-    // console.log(cartElement);
-    
+    // console.log(cartElement);  
 }
-  // summary list
-  let col2 = document.createElement('div');
+
+// increment function
+let add = document.querySelectorAll('.add');
+// console.log(add);
+
+for(let i=0; i<add.length; i++){
+    let addBtn = add[i];
+    // console.log(addBtn);
+    
+    addBtn.addEventListener('click', incrementFn);
+}
+
+function incrementFn(event){
+    let addClick = event.target;
+    // console.log(addClick);
+    let addInput = addClick.parentElement.children[3];
+    // console.log(addInput);
+    let addInputValue = addInput.value;
+    // console.log(addInputValue);
+    let incrementValue = parseInt(addInputValue) + 1;
+    console.log(incrementValue);
+    addInput.value = incrementValue;
+
+    // localStorage.setItem('addItem',incrementValue);
+}
+
+// decrement function
+let sub = document.querySelectorAll('.sub');
+console.log(sub);
+
+for(let i=0; i<sub.length; i++){
+    let subBtn = sub[i];
+    // console.log(subBtn);
+    subBtn.addEventListener('click',decrementFn);
+}
+
+function decrementFn(event){
+    let subClick = event.target;
+    // console.log(addClick);
+    let subInput = subClick.parentElement.children[3];
+    // console.log(addInput);
+    let subInputValue = subInput.value;
+    // console.log(addInputValue);
+    let decrementValue = parseInt(subInputValue) - 1;
+    // console.log(incrementValue);
+    if(decrementValue > 0){
+        subInput.value = decrementValue;
+    }
+    else{
+        subClick.parentElement.remove();
+    }
+}
+
+
+ // summary list
+ let col2 = document.createElement('div');
   col2.setAttribute('class','col-lg-4 col-sm-12');
 // console.log(col2);
 
@@ -99,26 +156,12 @@ summaryList.innerHTML =`
 `
 col2.appendChild(summaryDiv)
 summaryDiv.appendChild(summaryList)
-cartElement.appendChild(col2)
+cartElement2.appendChild(col2)
 
-// add function
-let add = (quantity, value) => {
-    console.log(quantity,value);
-    for(let key in cart){
-        // console.log(key,cart.id);
-        
-        console.log(key, cart[key].id);
-        if(key == cart[key].id){
-        cart[key].qty += value;
-    }
-        // console.log(cart[key].qty);
-        
-    }
-    
 
-}
 
 // let addFn = document.querySelector('.add');
 // // console.log(addFn);
-console.log(cart);
-
+// console.log(cart);
+// console.log(cartList);
+// // console.log(d);
