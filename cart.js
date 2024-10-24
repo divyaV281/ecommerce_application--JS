@@ -93,7 +93,7 @@ function incrementFn(event){
     console.log(incrementValue);
     addInput.value = incrementValue;
 
-    // localStorage.setItem('addItem',incrementValue);
+    localStorage.setItem('addItem',incrementValue);
 }
 
 // decrement function
@@ -121,6 +121,8 @@ function decrementFn(event){
     else{
         subClick.parentElement.remove();
     }
+    localStorage.setItem('subItem',decrementValue);
+
 }
 
 

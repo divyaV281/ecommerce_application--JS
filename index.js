@@ -6,6 +6,7 @@ let count = 0;
 let sum= 0;
 let cart ={};
 let cartCount = 0;
+let titleText = '';
 
 if (localStorage.getItem("count")) {
     count = parseInt(localStorage.getItem("count"));
@@ -29,7 +30,7 @@ async function fetchAPI(){
         // console.log(data);
         products = data;
         displayProducts(data);
-        // console.log(products);
+        console.log(products);
         // console.log(data);
         
         
@@ -37,6 +38,7 @@ async function fetchAPI(){
 }
 fetchAPI();
 
+// console.log(products);
 
 
 function displayProducts(data){
@@ -47,13 +49,16 @@ function displayProducts(data){
         // console.log(ele.title);
         titleTruncate(ele.title); // titleTruncate function
         
+        // titleText = ele.title;
+        // console.log(titleText);
+        
         // console.log(ele.description);
         descriptionTruncate(ele.description);  // descriptionTruncate
         
         row.innerHTML +=  `
         <div class="col d-flex justify-content-center">
-        <div class="card mb-5" style="width: 22rem;">
-        <img src="${ele.image}" class="card-img-top px-5 py-2 img-fluid" style = "width:334px; height:289px">
+        <div class="card mb-5" style="width: 26rem;">
+        <img src="${ele.image}" class="card-img-top img-fluid ps-5 mt-4" style = "width:375px; height:320px">
         <div class="card-body">
         <h5 class="card-title text-center">${truncateTitle}</h5>
         <p class="card-text text-center px-2 fw-normal">${truncateDescription}</p>
@@ -63,7 +68,7 @@ function displayProducts(data){
         </ul>
         <div class="card-body text-center d-flex justify-content-center">
         <button type="button" class="btn btn-dark py-2 mx-4">Details</button>
-        <button type="button" class="btn btn-dark py-2 cartButton" data-price=${ele.price} data-id=${ele.id} data-image=${ele.image} data-title=${ele.title}>Add to Cart</button>
+        <button type="button" class="btn btn-dark py-2 cartButton" data-price=${ele.price} data-id=${ele.id} data-image=${ele.image}  data-title=${ele.title}>Add to Cart</button>
         </div>
         </div>
         </div>
@@ -122,6 +127,8 @@ function filterProducts(category){
 function addCart(event){
     let price = Number(event.target.dataset.price);   
     let title = event.target.dataset.title;
+    console.log(title);
+    
     let id = event.target.dataset.id;
     let image = event.target.dataset.image;
   
@@ -144,8 +151,8 @@ function addCart(event){
 
     count++;
     sum += price;
-    console.log(cart);
-
+    // titleText = cart[id].title;
+    // console.log(titleText);
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCart()
 
@@ -157,4 +164,5 @@ function updateCart(){
     localStorage.setItem('cartCount',cartCount);
     localStorage.setItem("count", count);
     localStorage.setItem("sum",Math.round(sum));
+    localStorage.setItem('titleText', titleText);
 }
